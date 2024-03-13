@@ -11,11 +11,11 @@ export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: '/user-profile', title: 'Perfil',  icon:'person', class: '' },
     { path: '/table-list', title: 'Usuarios',  icon:'content_paste', class: '' },
-    { path: '/typography', title: 'Comentarios',  icon:'library_books', class: '' },
-    { path: '/icons', title: 'Publicaciones',  icon:'bubble_chart', class: '' },
+    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
+    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
     { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    { path: '/notifications', title: 'Notificationes',  icon:'notifications', class: '' },
-    { path: '/upgrade', title: 'Ajustes',  icon:'unarchive', class: 'active-pro' },
+    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
+    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 ];
 
 @Component({
