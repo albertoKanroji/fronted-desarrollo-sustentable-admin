@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Comentarios, Datum } from 'app/interfaces/comentarios';
 
 declare const google: any;
 
@@ -15,111 +17,33 @@ draggable?: boolean;
 })
 export class MapsComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-
-    var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
-    var mapOptions = {
-        zoom: 13,
-        center: myLatlng,
-        scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
-        styles: [{
-            "featureType": "water",
-            "stylers": [{
-                "saturation": 43
-            }, {
-                "lightness": -11
-            }, {
-                "hue": "#0088ff"
-            }]
-        }, {
-            "featureType": "road",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "hue": "#ff0000"
-            }, {
-                "saturation": -100
-            }, {
-                "lightness": 99
-            }]
-        }, {
-            "featureType": "road",
-            "elementType": "geometry.stroke",
-            "stylers": [{
-                "color": "#808080"
-            }, {
-                "lightness": 54
-            }]
-        }, {
-            "featureType": "landscape.man_made",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#ece2d9"
-            }]
-        }, {
-            "featureType": "poi.park",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#ccdca1"
-            }]
-        }, {
-            "featureType": "road",
-            "elementType": "labels.text.fill",
-            "stylers": [{
-                "color": "#767676"
-            }]
-        }, {
-            "featureType": "road",
-            "elementType": "labels.text.stroke",
-            "stylers": [{
-                "color": "#ffffff"
-            }]
-        }, {
-            "featureType": "poi",
-            "stylers": [{
-                "visibility": "off"
-            }]
-        }, {
-            "featureType": "landscape.natural",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "visibility": "on"
-            }, {
-                "color": "#b8cb93"
-            }]
-        }, {
-            "featureType": "poi.park",
-            "stylers": [{
-                "visibility": "on"
-            }]
-        }, {
-            "featureType": "poi.sports_complex",
-            "stylers": [{
-                "visibility": "on"
-            }]
-        }, {
-            "featureType": "poi.medical",
-            "stylers": [{
-                "visibility": "on"
-            }]
-        }, {
-            "featureType": "poi.business",
-            "stylers": [{
-                "visibility": "simplified"
-            }]
-        }]
-
-    };
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-    var marker = new google.maps.Marker({
-        position: myLatlng,
-        title: "Hello World!"
-    });
-
-    // To add the marker to the map, call setMap();
-    marker.setMap(map);
-  }
+ 
+    usuarios: Datum[] = []; // Variable para almacenar los usuarios
+    loading: boolean = true; // Variable para indicar si se están cargando los datos
+  
+    constructor(private http: HttpClient) { }
+  
+    ngOnInit() {
+      this.obtenerUsuarios(); // Llama a la función para obtener usuarios cuando se inicialice el componente
+    }
+  
+    obtenerUsuarios() {
+      this.http.get<Comentarios>('http://127.0.0.1:8000/api/v1/comentarios/')
+        .subscribe(data => {
+          if (data.success) {
+            this.usuarios = data.data; // Asigna los datos de usuarios a la variable usuarios
+            this.loading = false; // Indica que los datos han sido cargados correctamente
+          } else {
+            console.error('Hubo un error al obtener los usuarios:', data.message);
+            this.loading = false; // Asegúrate de manejar los errores adecuadamente y cambiar el estado de loading
+          }
+        }, error => {
+          console.error('Error al hacer la solicitud:', error);
+          this.loading = false; // Asegúrate de manejar los errores adecuadamente y cambiar el estado de loading
+        });
+    }
+    agregarUsuario(){
+  
+    }
 
 }
