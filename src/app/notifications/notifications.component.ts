@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Datum, UsuariosClientes } from 'app/interfaces/usuarios';
 declare var $: any;
 @Component({
   selector: 'app-notifications',
@@ -6,37 +8,32 @@ declare var $: any;
   styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent implements OnInit {
+  usuarios: Datum[] = []; // Variable para almacenar los usuarios
+  loading: boolean = true; // Variable para indicar si se están cargando los datos
 
-  constructor() { }
-  showNotification(from, align){
-      const type = ['','info','success','warning','danger'];
+  constructor(private http: HttpClient) { }
 
-      const color = Math.floor((Math.random() * 4) + 1);
+  ngOnInit() {
+    this.obtenerUsuarios(); // Llama a la función para obtener usuarios cuando se inicialice el componente
+  }
 
-      $.notify({
-          icon: "notifications",
-          message: "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer."
-
-      },{
-          type: type[color],
-          timer: 4000,
-          placement: {
-              from: from,
-              align: align
-          },
-          template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-11 col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
-            '<button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons">close</i></button>' +
-            '<i class="material-icons" data-notify="icon">notifications</i> ' +
-            '<span data-notify="title">{1}</span> ' +
-            '<span data-notify="message">{2}</span>' +
-            '<div class="progress" data-notify="progressbar">' +
-              '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
-            '</div>' +
-            '<a href="{3}" target="{4}" data-notify="url"></a>' +
-          '</div>'
+  obtenerUsuarios() {
+    this.http.get<UsuariosClientes>('http://127.0.0.1:8000/api/v1/categorias/')
+      .subscribe(data => {
+        if (data.success) {
+          this.usuarios = data.data; // Asigna los datos de usuarios a la variable usuarios
+          this.loading = false; // Indica que los datos han sido cargados correctamente
+        } else {
+          console.error('Hubo un error al obtener los usuarios:', data.message);
+          this.loading = false; // Asegúrate de manejar los errores adecuadamente y cambiar el estado de loading
+        }
+      }, error => {
+        console.error('Error al hacer la solicitud:', error);
+        this.loading = false; // Asegúrate de manejar los errores adecuadamente y cambiar el estado de loading
       });
   }
-  ngOnInit() {
+  agregarUsuario(){
+
   }
 
 }
