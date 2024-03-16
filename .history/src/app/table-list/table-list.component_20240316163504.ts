@@ -34,8 +34,8 @@ export class TableListComponent implements OnInit {
         this.loading = false; // Asegúrate de manejar los errores adecuadamente y cambiar el estado de loading
       });
   }
-  agregarUsuario(){
-
+  agregarUsuario{
+    
   }
 
 }

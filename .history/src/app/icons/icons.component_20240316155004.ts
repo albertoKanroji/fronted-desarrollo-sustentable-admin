@@ -16,6 +16,7 @@ export class IconsComponent implements OnInit {
 
   ngOnInit() {
     this.obtenerPublicaciones(); 
+    // Llama a la función para obtener publicaciones cuando se inicialice el componente
   }
 
   obtenerPublicaciones() {
