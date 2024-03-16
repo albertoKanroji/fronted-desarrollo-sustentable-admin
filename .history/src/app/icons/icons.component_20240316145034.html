@@ -8,7 +8,7 @@
                         <p class="card-category">Aquí se muestran las publicaciones</p>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive" *ngIf="!loading; else loadingIndicator">
+                        <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
@@ -38,12 +38,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        <ng-template #loadingIndicator>
-                            <div class="text-center">
-                                <mat-spinner></mat-spinner>
-                                <p>Cargando...</p>
-                            </div>
-                        </ng-template>
                     </div>
                 </div>
             </div>
