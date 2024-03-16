@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Datum, UsuariosClientes } from 'app/interfaces/usuarios';
+import { Categorias, Datum } from 'app/interfaces/cateogorias';
+
 declare var $: any;
 @Component({
   selector: 'app-notifications',
@@ -18,7 +19,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   obtenerUsuarios() {
-    this.http.get<UsuariosClientes>('http://127.0.0.1:8000/api/v1/categorias/')
+    this.http.get<Categorias>('http://127.0.0.1:8000/api/v1/categorias/')
       .subscribe(data => {
         if (data.success) {
           this.usuarios = data.data; // Asigna los datos de usuarios a la variable usuarios

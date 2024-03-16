@@ -30,24 +30,15 @@
                                         <th>
                                             Nombre
                                         </th>
-                                        <th>
-                                            Apellido Paterno
-                                        </th>
-                                        <th>
-                                            Apellido Materno
-                                        </th>
-                                        <th>
-                                            Email
-                                        </th>
+                                       
+                                        
                                     </thead>
                                     <tbody>
                                         <!-- Utilizando *ngFor para iterar sobre los datos de usuarios -->
                                         <tr *ngFor="let usuario of usuarios">
                                             <td>{{ usuario.id }}</td>
-                                            <td>{{ usuario.nombreCliente }}</td>
-                                            <td>{{ usuario.usuarioApellidoPaterno }}</td>
-                                            <td>{{ usuario.usuarioApellidoMaterno }}</td>
-                                            <td>{{ usuario.usuarioEmail }}</td>
+                                            <td>{{ usuario.  nombreCategoria }}</td>
+                                           
                                         </tr>
                                     </tbody>
                                 </table>
