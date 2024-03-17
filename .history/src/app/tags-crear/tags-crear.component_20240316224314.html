@@ -1,0 +1,28 @@
+<div class="main-content">
+    <div class="container-fluid">
+       
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Crear Tag</h4>
+                        <p class="card-category">Tag para publicaciones</p>
+                    </div>
+                    <div class="card-body">
+                        <form (submit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Nombre Tag" [(ngModel)]="nombreTag">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Crear Tag</button>
+                            <div class="clearfix"></div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+            
+    </div>
+</div>

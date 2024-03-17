@@ -1,0 +1,60 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title">Simple Table</h4>
+                                <p class="card-category">Here is a subtitle for this table</p>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <!-- Botón "Agregar" -->
+                                <button class="btn btn-primary" >Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" *ngIf="!loading; else loadingIndicator">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Título
+                                    </th>
+                                    <th>
+                                        Subtítulo
+                                    </th>
+                                    <th>
+                                        Descripción
+                                    </th>
+                                    <th>
+                                        Categoría
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let publicacion of publicaciones | paginate: { itemsPerPage: 10, currentPage: p }">
+                                        <td>{{ publicacion.id }}</td>
+                                        <td>{{ publicacion.titulo }}</td>
+                                        <td>{{ publicacion.subTitulo }}</td>
+                                        <td>{{ publicacion.descripcion }}</td>
+                                        <td>{{ publicacion.categoria.nombreCategoria }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ng-template #loadingIndicator>
+                            <div class="text-center">
+                                <mat-spinner></mat-spinner>
+                                <p>Cargando...</p>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
