@@ -2,7 +2,7 @@ export interface Tags {
     success: boolean;
     status:  number;
     message: string;
-    data:    Datum_t[];
+    data:    Datum[];
 }
 
 export interface Datum_t {

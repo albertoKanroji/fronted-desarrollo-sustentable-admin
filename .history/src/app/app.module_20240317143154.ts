@@ -25,15 +25,13 @@ import { MatInputModule } from '@angular/material/input';
     RouterModule,
     AppRoutingModule,
     MatPaginatorModule,
-    NgxPaginationModule,
-    MatFormFieldModule,
-    MatInputModule,
+    NgxPaginationModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     TagsComponent,
-  //  PublicacionCrearEditComponent,
+    PublicacionCrearEditComponent,
    // TagsCrearComponent,
     
 

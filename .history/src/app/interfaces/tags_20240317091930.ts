@@ -1,8 +1,8 @@
 export interface Tags {
     success: boolean;
     status:  number;
-    message: string;
-    data:    Datum_t[];
+    message: strin_g;
+    data:    Datum[];
 }
 
 export interface Datum_t {

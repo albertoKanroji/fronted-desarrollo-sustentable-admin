@@ -28,12 +28,13 @@ import { MatInputModule } from '@angular/material/input';
     NgxPaginationModule,
     MatFormFieldModule,
     MatInputModule,
+    PublicacionCrearEditComponent 
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     TagsComponent,
-  //  PublicacionCrearEditComponent,
+    PublicacionCrearEditComponent,
    // TagsCrearComponent,
     
 

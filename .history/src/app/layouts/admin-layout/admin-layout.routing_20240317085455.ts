@@ -65,5 +65,5 @@ export const AdminLayoutRoutes: Routes = [
   { path: "upgrade", component: UpgradeComponent },
   { path: "tags", component: TagsComponent },
   { path: "tags-crear", component: TagsCrearComponent },
-  { path: "publicacion-crear", component: PublicacionCrearEditComponent },
+  { path: "", component: PublicacionCrearEditComponent },
 ];

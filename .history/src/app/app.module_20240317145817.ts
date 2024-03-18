@@ -33,7 +33,8 @@ import { MatInputModule } from '@angular/material/input';
     AppComponent,
     AdminLayoutComponent,
     TagsComponent,
-  //  PublicacionCrearEditComponent,
+    PublicacionCrearEditComponent,
+    PublicacionCrearEditComponent
    // TagsCrearComponent,
     
 

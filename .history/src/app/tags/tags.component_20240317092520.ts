@@ -8,7 +8,7 @@ import { Datum_t, Tags } from "app/interfaces/tags";
   styleUrls: ["./tags.component.scss"],
 })
 export class TagsComponent implements OnInit {
-  tags: Datum_t[] = []; // Variable para almacenar los usuarios
+  tags: Datum[] = []; // Variable para almacenar los usuarios
   loading: boolean = true; // Variable para indicar si se están cargando los datos
 
   constructor(private http: HttpClient) {}
