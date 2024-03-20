@@ -90,7 +90,7 @@ export class PublicacionCrearEditComponent implements OnInit {
           (response) => {
             console.log("Publicación creada exitosamente:", response);
             // Aquí puedes redirigir a la página deseada
-            this.router.navigateByUrl("/icons");
+            this.router.navigateByUrl("/tags");
           },
           (error) => {
             console.error("Error al crear la publicación:", error);

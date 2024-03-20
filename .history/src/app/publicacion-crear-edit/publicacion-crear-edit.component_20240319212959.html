@@ -10,7 +10,17 @@
                     <div class="card-body">
                         <form [formGroup]="publicacionForm" (ngSubmit)="onSubmit($event)">
                             <div class="row">
-                               
+                                <div class="col-md-5">
+                                    <mat-form-field>
+                                        <mat-label>Cars</mat-label>
+                                        <select matNativeControl required>
+                                          <option value="volvo">Volvo</option>
+                                          <option value="saab">Saab</option>
+                                          <option value="mercedes">Mercedes</option>
+                                          <option value="audi">Audi</option>
+                                        </select>
+                                      </mat-form-field>
+                                </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
                                       <input matInput formControlName="titulo" placeholder="Titulo">
@@ -35,13 +45,19 @@
                                 </div>
                             </div>
                             
-                            
                             <div class="row">
                                 <div class="col-md-12">
+                                  <label>About Me</label>
+                                  <mat-form-field class="example-full-width">
+                                     <textarea matInput formControlName="descripcion"  placeholder="Contenido"></textarea>
+                                   </mat-form-field>
+                                    <!-- <div class="form-group">
+  
                                         <div class="form-group">
-                                            <label class="bmd-label-floating"> Contenido</label>
-                                            <textarea class="form-control" formControlName="descripcion"rows="5"></textarea>
+                                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                            <textarea class="form-control" rows="5"></textarea>
                                         </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <button mat-raised-button type="submit" class="btn btn-danger pull-right">Crear Puublicacion</button>

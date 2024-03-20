@@ -39,7 +39,7 @@ export class PublicacionCrearEditComponent implements OnInit {
       subTitulo: [""],
       descripcion: [""],
       categoriasPublicaciones_id: [""],
-      tags: [[1, 2]],
+      tags: [[]],
       users_id: [1],
     });
     //  this.obtenerCategorias();
@@ -90,7 +90,7 @@ export class PublicacionCrearEditComponent implements OnInit {
           (response) => {
             console.log("Publicación creada exitosamente:", response);
             // Aquí puedes redirigir a la página deseada
-            this.router.navigateByUrl("/icons");
+            this.router.navigateByUrl("/tags");
           },
           (error) => {
             console.error("Error al crear la publicación:", error);

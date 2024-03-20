@@ -24,14 +24,27 @@ export class TagsCrearComponent implements OnInit {
 
     if (this.tagForm.valid) {
       const nombreTag = this.tagForm.value.nombreTag;
-      this.http.post('http://127.0.0.1:8000/api/v1/tags/', { nombreTag })
-        .subscribe(response => {
+    
+      // Observable con la petición HTTP
+      const observable = this.http.post('http://127.0.0.1:8000/api/v1/tags/', { nombreTag });
+    
+      // Suscripción al Observable con `next` y `finally`
+      observable.subscribe({
+        next: response => {
           console.log('Tag creado exitosamente:', response);
-          this.router.navigateByUrl('/icons');
-          // Redirigir a la ventana anterior o a otra ruta si es necesario
-        }, error => {
+          this.router.navigateByUrl('/icons'); // Redirigir a la ventana anterior o a otra ruta si es necesario
+        },
+        error: error => {
           console.error('Error al crear el tag:', error);
-        });
+        },
+        finally: () => {
+          // Código a ejecutar independientemente del éxito o fallo de la petición
+          console.log('Petición finalizada');
+          // Aquí puedes realizar acciones como:
+          // - Deshabilitar un botón de envío
+          // - Mostrar un mensaje informativo
+        }
+      });
     }
   }
 

@@ -34,9 +34,6 @@
                                     <th>
                                         Categoría
                                     </th>
-                                    <th>
-                                        Acciones
-                                    </th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let publicacion of publicaciones">
@@ -49,7 +46,7 @@
                                             <!-- Botón de editar -->
                                             <button class="btn btn-info" (click)="editarTag(publicacion.id)">Editar</button>
                                             <!-- Botón de eliminar -->
-                                            <button class="btn btn-danger" (click)="eliminarTag(publicacion.id)">Eliminar</button>
+                                            <button class="btn btn-danger" (click)="eliminarTag(tag.id)">Eliminar</button>
                                         </td>
                                     </tr><pagination-controls (pageChange)="p = $event"  previousLabel="Previous"
                             nextLabel="Next" ></pagination-controls>

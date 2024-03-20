@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { Categorias, Datum } from "app/interfaces/cateogorias";
 import { Datum_t, Tags } from "app/interfaces/tags";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -13,22 +13,12 @@ import { Router } from "@angular/router";
   templateUrl: "./publicacion-crear-edit.component.html",
   styleUrls: ["./publicacion-crear-edit.component.scss"],
   standalone: true,
-  imports: [
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    MatInputModule,
-    FormsModule,
-  ],
+  imports: [MatFormFieldModule,ReactiveFormsModule, MatSelectModule, MatInputModule, FormsModule],
 })
 export class PublicacionCrearEditComponent implements OnInit {
   publicacionForm: FormGroup;
-
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private router: Router
-  ) {}
+  
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
   // categorias: Datum[] = [];
   // tags: Datum_t[] = [];
   // cargandoCategorias: boolean = false;
@@ -39,26 +29,13 @@ export class PublicacionCrearEditComponent implements OnInit {
       subTitulo: [""],
       descripcion: [""],
       categoriasPublicaciones_id: [""],
-      tags: [[1, 2]],
+      tags: this.fb.array([""]),
       users_id: [1],
     });
-    //  this.obtenerCategorias();
-    // this.obtenerTags();
-  }
-  get tags(): FormArray {
-    return this.publicacionForm.get("tags") as FormArray;
-  }
-  // Dentro de tu clase componente
-  addTag() {
-    this.tags.push(this.fb.control(""));
-    this.publicacionForm.markAsDirty();
+  //  this.obtenerCategorias();
+   // this.obtenerTags();
 
   }
-
-  removeTag(index: number) {
-    this.tags.removeAt(index);
-  }
-
   // async obtenerCategorias() : Promise<void> {
   //   this.cargandoCategorias = true; // Indicar que se están cargando las categorías
   //   this.http
@@ -90,7 +67,7 @@ export class PublicacionCrearEditComponent implements OnInit {
           (response) => {
             console.log("Publicación creada exitosamente:", response);
             // Aquí puedes redirigir a la página deseada
-            this.router.navigateByUrl("/icons");
+            this.router.navigateByUrl('/tags');
           },
           (error) => {
             console.error("Error al crear la publicación:", error);

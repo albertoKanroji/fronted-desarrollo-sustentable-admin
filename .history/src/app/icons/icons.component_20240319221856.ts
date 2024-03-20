@@ -27,10 +27,6 @@ export class IconsComponent implements OnInit {
     this.publicaciones = []; // Vaciar las publicaciones
     this.obtenerPublicaciones(); // Volver a cargar las publicaciones
   }
-  editarTag(tagId: number) {
-    // Redirige a la página de edición con el ID del tag
-    // this.router.navigateByUrl(`/tags-editar/${tagId}`);
-  }
 
   obtenerPublicaciones() {
     this.http.get<Publicaciones>('http://127.0.0.1:8000/api/v1/publicaciones/')

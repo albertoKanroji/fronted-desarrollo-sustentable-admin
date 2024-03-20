@@ -27,10 +27,6 @@ export class IconsComponent implements OnInit {
     this.publicaciones = []; // Vaciar las publicaciones
     this.obtenerPublicaciones(); // Volver a cargar las publicaciones
   }
-  editarTag(tagId: number) {
-    // Redirige a la página de edición con el ID del tag
-    // this.router.navigateByUrl(`/tags-editar/${tagId}`);
-  }
 
   obtenerPublicaciones() {
     this.http.get<Publicaciones>('http://127.0.0.1:8000/api/v1/publicaciones/')
@@ -49,14 +45,14 @@ export class IconsComponent implements OnInit {
   }
   eliminarTag(id: number) {
     // Realiza la solicitud HTTP DELETE para eliminar el tag
-    this.http.delete(`http://127.0.0.1:8000/api/v1/publicaciones/${id}`).subscribe(
+    this.http.delete(`http://127.0.0.1:8000/api/v1/publicaciones/${tagIidd}`).subscribe(
       () => {
-        console.log(`Tag con ID ${id} eliminado exitosamente.`);
+        console.log(`Tag con ID ${tagId} eliminado exitosamente.`);
         // Actualiza la lista de tags después de eliminar
         this.obtenerPublicaciones();
       },
       (error) => {
-        console.error(`Error al eliminar el tag con ID ${id}:`, error);
+        console.error(`Error al eliminar el tag con ID ${tagId}:`, error);
       }
     );
   }

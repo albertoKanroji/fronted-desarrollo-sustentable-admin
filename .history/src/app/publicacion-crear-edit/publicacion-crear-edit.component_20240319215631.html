@@ -28,11 +28,20 @@
                                     <input matInput formControlName="categoriasPublicaciones_id"  placeholder="Categoria" type="text">
                                   </mat-form-field>
                                 </div>
-                                <div class="col-md-6">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput formControlName="tags" placeholder="Tags" type="text">
-                                  </mat-form-field>
-                                </div>
+                                
+                            </div>
+                            <div class="row" formArrayName="tags">
+                              <div class="col-md-6" *ngFor="let tag of tags.controls; let i = index">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput [formControlName]="i" placeholder="Tag {{ i + 1 }}" type="text">
+                                </mat-form-field>
+                                <button mat-icon-button color="warn" (click)="removeTag(i)">
+                                  <mat-icon>close</mat-icon>
+                                </button>
+                              </div>
+                              <div class="col-md-6">
+                                <button mat-raised-button color="primary" type="submit" (click)="addTag()">Agregar otro tag</button>
+                              </div>
                             </div>
                             
                             
